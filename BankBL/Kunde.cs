@@ -7,9 +7,15 @@ using System.Threading.Tasks;
 namespace BankBL
 {
     public class Kunde
-    {
+    {        
+
+        public Kunde(string Name)
+        {
+            this.Name = Name;
+        }
+
         /// <summary>
-        /// Name des Kunden
+        /// Name des Kunden: Les- und schreibbare Eigenschaft
         /// </summary>
         public string Name { get; set; }
 
@@ -30,20 +36,20 @@ namespace BankBL
         }
 
 
-        public Girokonto[] Konten
+        public IEnumerable<Girokonto> Konten
         {
             get
             {
-                return _Konten.ToArray();
+                return _Konten;
             }
         }
         private List<Girokonto> _Konten = new List<Girokonto>();
 
         /// <summary>
-        /// Neuen Konto öffnen
+        /// Pflegen der Beziehung Kunde <-->> Konto
         /// </summary>
         /// <param name="NeuesKonto"></param>
-        public void NeueKontoEröffnen(Girokonto NeuesKonto)
+        public void NeuesKonto(Girokonto NeuesKonto)
         {
             _Konten.Add(NeuesKonto);
         }

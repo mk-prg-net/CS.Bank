@@ -2,42 +2,73 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 
-namespace BankBL.Test
+namespace BetterBankBL.Test
 {
     [TestClass]
     public class Bank
     {
+        static BetterBankBL.Interfaces.KundenFactory KundenFactory;
+        static BetterBankBL.Interfaces.KontenFactory KontenFactory;
+
+        [ClassInitialize]
+        public static void TestClassInit(TestContext ctx)
+        {
+            KundenFactory = new BetterBankBL.TestMockUps.KundenFactory();
+            KontenFactory = new BetterBankBL.TestMockUps.KontenFactory();
+        }
+
+
+        /// <summary>
+        /// Initialisierung vor jedem Test
+        /// </summary>
+        [TestInitialize]
+        public void TestInit()
+        {
+
+        }
+
+        /// <summary>
+        /// Aufräumarbeiten nach jedem Test
+        /// </summary>
+        [TestCleanup]
+        public void TestCleanup()
+        {
+
+        }
+
         [TestMethod]
         public void Bank_KontoTests()
         {
-            var DonaldsKonto = new BankBL.Girokonto("4711", null);
+            
+
+            var DonaldsKonto = KontenFactory.Create("4711", null);
             Kontotransaktionen(DonaldsKonto);
 
 
         }
 
-        private static void Kontotransaktionen(BankBL.Girokonto DonaldsKonto)
+        private static void Kontotransaktionen(BetterBankBL.Interfaces.IKonto Konto)
         {
-
-
             // Eine Behauptung prüfen im Rahmen des Testframeworks
-            Assert.AreEqual(0.0, DonaldsKonto.Guthaben);
+            Assert.AreEqual(0.0, Konto.Guthaben);
 
-            var neueGuthaben = DonaldsKonto.Einzahlen(500);
-            Assert.IsTrue(neueGuthaben == 500.0);
-            Assert.AreEqual(500.0, DonaldsKonto.Guthaben);
+            Konto.Einzahlen(500);
+            
+            Assert.IsTrue(Konto.Guthaben == 500.0);
+            Assert.AreEqual(500.0, Konto.Guthaben);
 
-            neueGuthaben = DonaldsKonto.Abheben(200);
-            Assert.IsTrue(neueGuthaben == 300.0);
+            Konto.Abheben(200);
+            Assert.IsTrue(Konto.Guthaben == 300.0);
             //Assert.AreEqual(500.0, DonaldsKonto.Guthaben);
-            Assert.AreEqual(300.0, DonaldsKonto.Guthaben);
+            Assert.AreEqual(300.0, Konto.Guthaben);
         }
 
 
         [TestMethod]
         public void Bank_BankhausTests()
         {
-            var BankhausDagobert = new BankBL.Bankhaus();
+            // DI- Pattern: Auflösen der Abhängigkeiten durch übergeben der Klassenfabriken an den Konstruktor
+            var BankhausDagobert = new BetterBankBL.Interfaces.Bank(KundenFactory, KontenFactory, "Dagobert");
 
             // Neue Kunden anlegen
             BankhausDagobert.NeuerKundeAnlegen("Donald");
@@ -71,6 +102,5 @@ namespace BankBL.Test
             }
 
         }
-
     }
 }

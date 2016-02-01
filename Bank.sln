@@ -1,13 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankBL", "BankBL\BankBL.csproj", "{C26A6848-3B9D-4D3B-A16D-51D04FF6AF5E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankBL.Test", "BankBL.Test\BankBL.Test.csproj", "{49F01034-4D9C-465C-A484-0445F530A25A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank.Client.WinForm", "Bank.Client.WinForm\Bank.Client.WinForm.csproj", "{E25BCC1F-7B8D-4FC0-9086-11FE14E05E0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterBankBL.Interfaces", "BetterBankBL.Interfaces\BetterBankBL.Interfaces.csproj", "{5CE3174F-DF73-46E2-A461-F867EE3C28DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterBankBL.TestMockUps", "BetterBankBL.TestMockUps\BetterBankBL.TestMockUps.csproj", "{C5D056E8-ADFE-41AF-9445-12FBF9E5F35A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterBankBL.Test", "BetterBankBL.Test\BetterBankBL.Test.csproj", "{7C31A0D5-91D0-41AD-9AF1-B8135C2712C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +33,18 @@ Global
 		{E25BCC1F-7B8D-4FC0-9086-11FE14E05E0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E25BCC1F-7B8D-4FC0-9086-11FE14E05E0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E25BCC1F-7B8D-4FC0-9086-11FE14E05E0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CE3174F-DF73-46E2-A461-F867EE3C28DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CE3174F-DF73-46E2-A461-F867EE3C28DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CE3174F-DF73-46E2-A461-F867EE3C28DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CE3174F-DF73-46E2-A461-F867EE3C28DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5D056E8-ADFE-41AF-9445-12FBF9E5F35A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5D056E8-ADFE-41AF-9445-12FBF9E5F35A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5D056E8-ADFE-41AF-9445-12FBF9E5F35A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5D056E8-ADFE-41AF-9445-12FBF9E5F35A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C31A0D5-91D0-41AD-9AF1-B8135C2712C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C31A0D5-91D0-41AD-9AF1-B8135C2712C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C31A0D5-91D0-41AD-9AF1-B8135C2712C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C31A0D5-91D0-41AD-9AF1-B8135C2712C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

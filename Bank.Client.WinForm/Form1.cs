@@ -12,8 +12,19 @@ namespace Bank.Client.WinForm
 {
     public partial class Form1 : Form
     {
+
+        static BetterBankBL.Interfaces.KundenFactory KundenFactory = new BetterBankBL.TestMockUps.KundenFactory();
+        static BetterBankBL.Interfaces.KontenFactory KontenFactory = new BetterBankBL.TestMockUps.KontenFactory();
+
+
+        IEnumerable<KundenViewModel> CreateKundenliste()
+        {
+            return Bankhaus.AlleKunden.Select(r => new KundenViewModel(r));
+        }
+
+
         // Bankhaus als Singelton: dieses Objkekt wird die Gesamte Laufzeit über existieren
-        BankBL.Bankhaus Bankhaus = new BankBL.Bankhaus();
+        BetterBankBL.Interfaces.Bank Bankhaus;
 
         public Form1()
         {
@@ -21,7 +32,9 @@ namespace Bank.Client.WinForm
 
             Text = Properties.Settings.Default.Programmtitel;
 
-            KundenBindingSource.DataSource = Bankhaus.AlleKunden;
+            Bankhaus = new  BetterBankBL.Interfaces.Bank(KundenFactory, KontenFactory, "Dagobert");
+
+            KundenBindingSource.DataSource = CreateKundenliste();
         }
 
         private void beendenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -35,10 +48,8 @@ namespace Bank.Client.WinForm
 
             toolStripStatusLabel1.Text =  "Der neue Kunde" + tbxName.Text + " wurde angelegt";
 
-            KundenBindingSource.DataSource = Bankhaus.AlleKunden;
-            KundenBindingSource.ResetBindings(false);           
-
-
+            KundenBindingSource.DataSource = CreateKundenliste();
+            KundenBindingSource.ResetBindings(false);   
 
         }
     }

@@ -8,11 +8,36 @@ namespace BankBL
 {
     public class Girokonto
     {
+
+        public Girokonto(string KtoNr, Kunde Kunde)
+        {
+            _KtoNr = KtoNr;
+            _Kunde = Kunde;
+        }
+
         /// <summary>
         /// Kontonummer als Eigenschaft
         /// </summary>
-        public string KtoNr { get; set; }
+        public string KtoNr {
+            get
+            {
+                return _KtoNr;
+            }
+        }
+        string _KtoNr;
 
+        /// <summary>
+        /// Kunde dem das Konto gehört.
+        /// Implementierung der Beziehung Kunde <-->> Konto
+        /// </summary>
+        public Kunde Kunde
+        {
+            get
+            {
+                return _Kunde;
+            }
+        }
+        Kunde _Kunde;
 
         public double Guthaben
         {
